@@ -26,12 +26,13 @@ public class NewMain {
      */
     public static void main(String[] args) {
         
-        DaoUsuario daoUsuario = new DaoUsuario(); 
+        /*DaoUsuario daoUsuario = new DaoUsuario(); 
         List<Usuario> lista = daoUsuario.listado(); 
         for(Usuario u : lista){
             System.out.println("nombre " +u.getNombreApellido());
-        }
-        /*Enumeration puertos; //busca todos los puertos y los guarda en el objeto puertos
+        }*/
+        
+        Enumeration puertos; //busca todos los puertos y los guarda en el objeto puertos
         OutputStream ops;
 
         puertos = CommPortIdentifier.getPortIdentifiers(); //ojo tiene que tener la -s- al ultimo porque hay otro metodo sin -s-
@@ -44,9 +45,9 @@ public class NewMain {
             //hasmorelements mientras tenga mas eleementos
             portId = (CommPortIdentifier) puertos.nextElement(); //next elemento recorre uno por uno
             System.out.println(portId.getName()); //puertos disponbibles
-            if (portId.getName().equalsIgnoreCase("COM7")) {
+            if (portId.getName().equalsIgnoreCase("COM9")) {
                 try {
-                    serialport = (SerialPort) portId.open("EscrituraSerial1", 500);//tiempo en ms
+                    serialport = (SerialPort) portId.open("EscrituraSerial1", 57600);//tiempo en ms
                     ops = serialport.getOutputStream();
                     ops.write("Prueba de escritura en el puerto superada!".getBytes()); //get bytes transforma el string a bytes
                     ops.close();
@@ -55,7 +56,7 @@ public class NewMain {
                     // TODO: handle exception
                 }
             }
-        }*/
+        }
 
     }
 

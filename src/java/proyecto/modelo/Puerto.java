@@ -34,9 +34,9 @@ public class Puerto {
             //hasmorelements mientras tenga mas eleementos
             portId = (CommPortIdentifier) puertos.nextElement(); //next elemento recorre uno por uno
             System.out.println(portId.getName()); //puertos disponbibles
-            if (portId.getName().equalsIgnoreCase("COM7")) {
+            if (portId.getName().equalsIgnoreCase("COM9")) {
                 try {
-                    serialport = (SerialPort) portId.open("EscrituraSerial1", 500);//tiempo en ms
+                    serialport = (SerialPort) portId.open("EscrituraSerial1", 57600);//tiempo en ms
                     ops = serialport.getOutputStream();
                     ops.write(mensaje.getBytes()); //get bytes transforma el string a bytes
                     ops.close();
