@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="recursos/skins/web/dhtmlx.css"/>
+        <link rel="stylesheet" type="text/css" href="recursos/codebase/fonts/font_roboto/roboto.css"/>
+        <link rel="stylesheet" type="text/css" href="recursos/codebase/fonts/font_awesome/css/font-awesome.min.css"/>
+        <script src="recursos/codebase/dhtmlx.js"></script>
+        <script src="recursos/js/usuarios.js"></script>  
+        <script src="recursos/libjs/jquery-3.3.1.js"></script>  
+    </head>
+    <body>
+        <style>
+            html, body {
+                width: 100%;      /*provides the correct work of a full-screen layout*/ 
+                height: 100%;     /*provides the correct work of a full-screen layout*/
+                overflow: hidden; /*hides the default body's space*/
+                margin: 0px;      /*hides the body's scrolls*/
+            }
+        </style>  
+        <script>
+
+            var usuariosGrid = null;
+
+            dhtmlxEvent(window, "load", function () {
+
+                var main_layout = new dhtmlXLayoutObject(document.body, '2U');
+
+                var a = main_layout.cells('a');
+                var layout2 = a.attachLayout('2E');
+
+                campo1 = layout2.cells('a');
+                campo1.setWidth(500);
+
+                campo2 = layout2.cells('b');
+                campo2.hideHeader();
+                
+                var toolbar_Llamar = campo2.attachToolbar();
+                toolbar_Llamar.setIconset("awesome");
+                toolbar_Llamar.loadStruct('<toolbar><item type="separator" id="button_separator_3" /><item type="button" id="btnDescargar" img="fa fa-bell" text="Notificar" title="Siguiente turno"/></toolbar>', function () {});
+                toolbar_Llamar.addSpacer("button_separator_3");
+                
+                toolbar_Llamar.attachEvent('onClick', function (button) {
+                    llamarUsuario();
+                }); 
+                
+                usuariosGrid = campo2.attachGrid();
+                usuariosGrid.setHeader("Turno,Nombre,Telefono,Correo");
+                usuariosGrid.setColumnIds("turno,nombre,telefono,correo");
+                usuariosGrid.setColTypes("ro,ro,ro,ro");
+                usuariosGrid.setInitWidths("70,150,100,*");
+                usuariosGrid.init();
+                
+                ListarUsuarios(); 
+
+            });
+        </script>
+    </body>
+</html>
