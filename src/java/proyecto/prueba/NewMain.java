@@ -45,11 +45,11 @@ public class NewMain {
             //hasmorelements mientras tenga mas eleementos
             portId = (CommPortIdentifier) puertos.nextElement(); //next elemento recorre uno por uno
             System.out.println(portId.getName()); //puertos disponbibles
-            if (portId.getName().equalsIgnoreCase("COM9")) {
+            if (portId.getName().equalsIgnoreCase("COM3")) {
                 try {
                     serialport = (SerialPort) portId.open("EscrituraSerial1", 57600);//tiempo en ms
                     ops = serialport.getOutputStream();
-                    ops.write("Prueba de escritura en el puerto superada!".getBytes()); //get bytes transforma el string a bytes
+                    ops.write("Prueba".getBytes()); //get bytes transforma el string a bytes
                     ops.close();
                     serialport.close();
                 } catch (Exception e) {

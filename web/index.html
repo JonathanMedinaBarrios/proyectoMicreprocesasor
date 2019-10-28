@@ -39,26 +39,36 @@ and open the template in the editor.
                 campo1 = layout2.cells('a');
                 campo1.setWidth(500);
 
+                var str = [
+                    {type: "settings", labelWidth: 80, inputWidth: 250, position: "absolute"},
+                    {type: "input", name: "nombre", label: "Nombre ", labelWidth: 250, labelAlign: "left", labelLeft: 25, labelTop: 25, inputLeft: 25, inputTop: 46},
+                    {type: "input", name: "telefono", label: "Telefono", labelWidth: 250, labelAlign: "left", labelLeft: 25, labelTop: 75, inputLeft: 25, inputTop: 96},
+                    {type: "input", name: "correo", label: "Correo", labelWidth: 250, labelAlign: "left", labelLeft: 25, labelTop: 125, inputLeft: 25, inputTop: 146},
+                    {type: "button", name: "ingresar", label: "Ingresar", value: "Ingresar", width: "125", inputWidth: 125, inputLeft: 150, inputTop: 175}
+                ];
+                
+                var form_1 = campo1.attachForm(str);
+
                 campo2 = layout2.cells('b');
                 campo2.hideHeader();
-                
+
                 var toolbar_Llamar = campo2.attachToolbar();
                 toolbar_Llamar.setIconset("awesome");
                 toolbar_Llamar.loadStruct('<toolbar><item type="separator" id="button_separator_3" /><item type="button" id="btnDescargar" img="fa fa-bell" text="Notificar" title="Siguiente turno"/></toolbar>', function () {});
                 toolbar_Llamar.addSpacer("button_separator_3");
-                
+
                 toolbar_Llamar.attachEvent('onClick', function (button) {
                     llamarUsuario();
-                }); 
-                
+                });
+
                 usuariosGrid = campo2.attachGrid();
                 usuariosGrid.setHeader("Turno,Nombre,Telefono,Correo");
                 usuariosGrid.setColumnIds("turno,nombre,telefono,correo");
                 usuariosGrid.setColTypes("ro,ro,ro,ro");
                 usuariosGrid.setInitWidths("70,150,100,*");
                 usuariosGrid.init();
-                
-                ListarUsuarios(); 
+
+                ListarUsuarios();
 
             });
         </script>
